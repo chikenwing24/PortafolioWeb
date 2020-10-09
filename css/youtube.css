@@ -1,0 +1,792 @@
+/* Embed google fonts for demo layout
+-----------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900');
+
+
+/* Main Page Layout 
+-- NOTE: Just for the demo page, and not
+required for the video modal... Video Modal
+styles are down below --
+-----------------------------------------*/
+* {
+  box-sizing: border-box;
+}
+html {
+  background: #fcfcfc;
+}
+@media (min-width: 641px) {
+  html {
+    background: #4b4b4b;
+  }
+}
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.noscroll { 
+	overflow: hidden;
+}
+
+
+main {
+  font-size: 0;
+}
+main .column.left,
+main .column.right {
+  background: #fcfcfc;
+  display: block;
+  position: relative;
+  font-size: 1rem;
+  width: 100%;
+  min-height: 0;
+  vertical-align: top;
+}
+@media (min-width: 641px) {
+    main .column.left,
+    main .column.right {
+      display: inline-block;
+      width: 50%;
+      min-height: 100vh;
+    }
+    main .column.left {
+      position: fixed;  
+    }
+    main .column.right {
+      margin-left: 50%;
+    }
+}
+
+.video-banner {
+  display: block;
+}
+@media (min-width: 641px) {
+  .video-banner {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+}
+
+.video-banner .video-banner-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+.video-banner-headline {
+  position: absolute;
+  left: 1.5rem;
+  bottom: 1.5rem;
+  
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.25em;
+  font-weight: 900;
+  line-height: 1.0em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
+}
+@media (min-width: 641px) {
+  .video-banner-headline {
+    left: 2em;
+    bottom: 2.75em;
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
+}
+.video-banner-icon-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  
+  display: block;
+  width: 2.5em;
+  height: 2.5em;
+  
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(1.0);
+	-moz-transform: translateX(-50%) translateY(-50%) scale(1.0);
+	-ms-transform: translateX(-50%) translateY(-50%) scale(1.0);
+	-o-transform: translateX(-50%) translateY(-50%) scale(1.0);
+	transform: translateX(-50%) translateY(-50%) scale(1.0);
+  
+  -webkit-transition: 
+		all 0.2s ease-out 0.05s;
+	transition: 
+		all 0.2s ease-out 0.05s;
+}
+@media (min-width: 641px) {
+  .video-banner-icon-play {
+    width: 4.5em;
+    height: 4.5em;
+  }
+}
+.video-banner-icon-play:hover {
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(1.2);
+	-moz-transform: translateX(-50%) translateY(-50%) scale(1.2);
+	-ms-transform: translateX(-50%) translateY(-50%) scale(1.2);
+	-o-transform: translateX(-50%) translateY(-50%) scale(1.2);
+	transform: translateX(-50%) translateY(-50%) scale(1.2);
+  
+  backgound: #330099;
+}
+
+.content {
+  display: block;
+  min-height: 100vh;
+  max-width: 40rem;
+  margin: 2.5rem auto;
+  padding: 1.5rem;
+}
+@media (min-width: 641px) {
+  .content {
+    margin: 5.75rem auto;
+    padding: 2.5rem;
+  }
+}
+
+.content h1,
+.content h2,
+.content p {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5em;
+  color: #0D013D;
+}
+.content h1 {
+  font-size: 3.25em;
+  font-weight: 200;
+  line-height: 1.0em;
+  
+  margin: 0 0 0.5rem 0;
+}
+@media (min-width: 641px) {
+  .content h1 {
+    font-size: 4em;
+  }
+}
+.content h2 {
+  font-size: 1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.155em;
+  
+  margin-top: 3em;
+}
+
+/* buttons */
+.content .button-group {
+  margin-top: 1em;
+}
+.content .button {
+  display: inline-block;
+  padding: 1em 2em;
+  min-width: 8em;
+  text-align: center;
+  font-weight: 900;
+  text-decoration: none;
+  border-radius: 1.5em;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.25);
+  
+  /* button theme - secondary is default */
+  background: #f0f0f0;
+  color: #2B2B2B;
+  
+  -webkit-transition: 
+		all 0.2s ease-out 0.05s;
+	transition: 
+		all 0.2s ease-out 0.05s;
+}
+.content .button ~ .button {
+  margin-left: 0.5em;
+}
+.content .button:hover {
+  background: #e5e5e5;
+}
+/* primary button overrides */
+.content .button.primary {
+  background: #E50055;
+  color: #fff;
+}
+.content .button.primary:hover {
+  background: #9D00E5;
+}
+
+
+/* video thumbnail grid */
+.content .video-thumb-grid {
+  position: relative;
+  font-size: 0; /* collapse the white-space */
+  width: calc(100% + 2rem);
+  margin: 0 -1rem;
+}
+.content .video-thumb {
+  display: inline-block;
+  vertical-align: top;
+  
+  text-decoration: none;
+  
+  /* calculate the width, gutters, and aspect ratio */
+  width: calc((100% - 4rem) / 2);
+  height: 0;
+  padding-top: calc(((100% - 4rem) / 2) * 0.5625); /* 16:9 calc */
+  
+  margin: 1rem 1rem; /* gutters */
+  
+  overflow: hidden; /* clipping */
+  
+  position: relative; /* enable positioning for inner content */
+  
+  font-size: 1rem; /* reset the font size */
+  
+  -webkit-transform: scale(1.0);
+	transform: scale(1.0);
+  box-shadow: 0 0 0 rgba(0,0,0,0.0);
+  
+  -webkit-transition: 
+		all 0.2s ease-out 0.05s;
+	transition: 
+		all 0.2s ease-out 0.05s;
+}
+.content .video-thumb:hover {
+	-webkit-transform: scale(1.05);
+	transform: scale(1.05);
+  box-shadow: 0 2px 4px rgba(13,1,61,0.35);
+}
+.content .video-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  
+  /* position inside the 16:9 container */
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  
+  /* clipping for source images that are letterboxed */
+  object-fit: cover;
+  object-position: 50% 50%;
+  
+  background: #2b2b2b;
+}
+
+
+
+
+
+
+
+
+/* Video Modal
+-----------------------------------------*/
+.video-modal,
+.video-modal .overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 3000;
+}
+.video-modal {
+	overflow: hidden;
+	position: fixed;
+	opacity: 0.0;
+
+  -webkit-transform: translate(500%,0%);
+  transform: translate(500%,0%);
+
+  -webkit-transition: -webkit-transform 0s linear 0s;
+  transition: transform 0s linear 0s;
+
+
+  /* using flexbox for vertical centering */
+
+  /* Flexbox display */
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+
+  /* Vertical alignment */
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.video-modal .overlay {
+  z-index: 0;
+  background: rgba(13,1,61,0.82); /* overlay color */
+
+  opacity: 0.0;
+
+  -webkit-transition: opacity 0.2s ease-out 0.05s;
+  transition: opacity 0.2s ease-out 0.05s;
+}
+
+
+.video-modal-content {
+	position: relative;
+	top: auto;
+	right: auto;
+	bottom: auto;
+	left: auto;
+	z-index: 1;
+  
+	margin: 0 auto;
+
+	overflow-y: visible;
+
+	background: #000;
+  
+  width: calc(100% - 12em);
+  height: 0;
+  padding-top: calc((100% - 12em) * 0.5625); /* 16:9 calc */
+}
+
+/* Scaling to fit within the current Viewport size:
+   When viewport aspect ratio is greater than 16:9
+   work off the height instead of the width for calc */
+ @media (min-aspect-ratio: 16/9) {
+  .video-modal-content {
+    width: 0;
+    height: calc(100vh - 10em);
+    padding-top: 0;
+    padding-left: calc((100vh - 10em) * 1.7778); /* 16:9 calc */
+  }
+}
+
+/* Mobile Layout Tweaks - side margins reduced */
+@media (max-width: 640px) {
+	.video-modal-content {
+		width: calc(100% - 1em);
+    padding-top: calc((100% - 1em) * 0.5625); /* 16:9 calc */
+	}
+}
+
+/* modal close button */
+.close-video-modal {
+	display: block;
+    position: absolute;
+    left: 0;
+    top: -40px;
+
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* set the iframe element to stretch to fit its parent element */
+iframe#youtube {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+
+	background: #000;
+	box-shadow: 0px 2px 16px rgba(0,0,0,0.5);
+}
+
+/* show the modal: 
+   add class to the body to reveal */
+.show-video-modal .video-modal {
+	opacity: 1.0;
+
+	transform: translate(0%,0%);
+	-webkit-transform: translate(0%,0%);
+}
+.show-video-modal .video-modal .overlay {
+	opacity: 1.0;
+}
+.show-video-modal .video-modal-content {
+	transform: translate(0%,0%);
+	-webkit-transform: translate(0%,0%);
+}
+
+.overlaypink {
+    z-index: 10;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #233237;
+    top: 0%;
+}
+
+.overlaypink h1 {
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    font-weight: bolder;
+    letter-spacing: 12px;
+  
+}
+
+.overlay-navigation {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: hsla(0, 0%, 0%, 0.8);
+    transform: translateY(-100%);
+  }
+  
+  .overlay-slide-down {
+    transition: all .4s ease-in-out;
+    transform: translateY(0)
+  }
+  
+  .overlay-slide-up {
+    transition: all .8s ease-in-out;
+    transform: translateY(-100%)
+  }
+  
+  .menus nav,
+  .menus nav ul {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menus nav ul {
+    display: flex;
+    list-style: none;
+  }
+  
+  .menus nav ul li {
+    flex-basis: 20%;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+    transform: translateY(-100%);
+  }
+  
+ .menus nav li a {
+    position: relative;
+    top: 46%;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    font-family: 'Work sans', sans-serif;
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
+ .menus nav li a:before {
+    content: '';
+    width: 70px;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 100;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: all .2s linear;
+  }
+  
+ .menus nav li a:after {
+    content: attr(data-content);
+    font-size: 0.7rem;
+    transition: all .2s linear;
+    opacity: 0;
+    position: absolute;
+    z-index: 100;
+    color: #fff;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    left: 0;
+    right: 0;
+    bottom: -50px;
+    text-transform: none;
+    font-family: 'Open sans', serif;
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: 0;
+  }
+  
+ .menus nav li a:hover:before {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  .menus nav li a:hover:after {
+    transform: translateY(15px);
+    opacity: 1;
+  }
+  
+  .menus nav li:nth-of-type(1){background-color: #18121E}
+  .menus nav li:nth-of-type(2){background-color: #233237}
+  .menus nav li:nth-of-type(3){background-color: #984B43}
+  .menus nav li:nth-of-type(4){background-color: #EAC67A}
+  .menus nav li:nth-of-type(5){background-color: #233237}
+  
+  .slide-in-nav-item {
+    animation: slide-in-nav-item 0.4s linear 1 .2s both;
+  }
+  
+  .slide-in-nav-item-delay-1 {
+    animation: slide-in-nav-item 0.4s linear 1 .4s both;
+  }
+  
+  .slide-in-nav-item-delay-2 {
+    animation: slide-in-nav-item 0.4s linear 1 .6s both;
+  }
+  
+  .slide-in-nav-item-delay-3 {
+    animation: slide-in-nav-item 0.4s linear 1 .8s both;
+  }
+  
+  .slide-in-nav-item-delay-4 {
+    animation: slide-in-nav-item 0.4s linear 1 1s both;
+  }
+  
+  .slide-in-nav-item-reverse {
+    animation: slide-in-nav-item-reverse .3s linear 1 .5s both;
+  }
+  
+  .slide-in-nav-item-delay-1-reverse {
+    animation: slide-in-nav-item-reverse .3s linear 1 .4s both;
+  }
+  
+  .slide-in-nav-item-delay-2-reverse {
+    animation: slide-in-nav-item-reverse .3s linear 1 .3s both;
+  }
+  
+  .slide-in-nav-item-delay-3-reverse {
+    animation: slide-in-nav-item-reverse .3s linear 1 .2s both;
+  }
+  
+  .slide-in-nav-item-delay-4-reverse {
+    animation: slide-in-nav-item-reverse .3s linear 1 both;
+  }
+  
+  
+  /* ====================================
+  Burger king
+  ==================================== */
+  
+  .open-overlay {
+    position: fixed;
+    right: 5rem;
+    top: 3.2rem;
+    z-index: 10000;
+    width: 34px;
+    display: block;
+    cursor: pointer;
+
+  }
+  
+  .open-overlay span {
+    display: block;
+    height: 3px;
+    border-radius: 6px;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    margin-top: 8px;
+  }
+ .black .open-overlay span {
+    display: block;
+    height: 1px;
+    background-color: rgb(0, 0, 0);
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  
+  .animate-top-bar {
+    animation: animate-top-bar .6s linear 1 both
+
+  }
+  
+  .animate-bottom-bar {
+    animation: animate-bottom-bar .6s linear 1 both
+    
+  }
+  
+  .animate-middle-bar {
+    animation: animate-middle-bar .6s linear 1 both
+  }
+  
+  .animate-out-top-bar {
+    animation: animate-out-top-bar .6s linear 1 both
+  }
+  
+  .animate-out-bottom-bar {
+    animation: animate-out-bottom-bar .6s linear 1 both
+  }
+  
+  .animate-out-middle-bar {
+    animation: animate-out-middle-bar .6s linear 1 both
+  }
+  
+  
+  /* ====================================
+  Animation keyframes
+  ==================================== */
+  
+  @keyframes slide-in-nav-item {
+    from {
+      -webkit-transform: translateY(-100%);
+      transform: translateY(-100%)
+    }
+    to {
+      -webkit-transform: translateY(0);
+      transform: translateY(0)
+    }
+  }
+  
+  @keyframes slide-in-nav-item-reverse {
+    from {
+      -webkit-transform: translateY(0);
+      transform: translateY(0)
+    }
+    to {
+      -webkit-transform: translateY(-100%);
+      transform: translateY(-100%)
+    }
+  }
+  
+  @keyframes animate-top-bar {
+    0% {
+      background-color: rgb(0, 0, 0);
+    }
+    50% {
+      -webkit-transform: translateY(9px);
+      transform: translateY(9px)
+    }
+    80% {
+      -webkit-transform: translateY(5px);
+      transform: translateY(5px);
+      background-color: rgb(0, 0, 0)
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      background-color: #000000;
+    }
+  }
+  
+  @keyframes animate-bottom-bar {
+    0% {
+      background-color: rgb(0, 0, 0);
+    }
+    50% {
+      -webkit-transform: translateY(-9px);
+      transform: translateY(-9px)
+    }
+    80% {
+      -webkit-transform: translateY(-5px);
+      transform: translateY(-5px);
+      background-color: rgb(0, 0, 0);
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      background-color: #000000;
+    }
+  }
+  
+  @keyframes animate-middle-bar {
+    0% {
+      background-color: rgb(0, 0, 0);
+    }
+    80% {
+      background-color: rgb(0, 0, 0);
+    }
+    100% {
+      background-color: #000000;
+    }
+  }
+  
+  @keyframes animate-out-top-bar {
+    0% {
+      background-color: #000000
+    }
+    50% {
+      -webkit-transform: translateY(9px);
+      transform: translateY(9px)
+    }
+    80% {
+      -webkit-transform: translateY(5px);
+      transform: translateY(5px);
+      background-color: #000000
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      background-color: rgb(0, 0, 0);
+    }
+  }
+  
+  @keyframes animate-out-bottom-bar {
+    0% {
+      background-color: #000000
+    }
+    50% {
+      -webkit-transform: translateY(-9px);
+      transform: translateY(-9px)
+    }
+    80% {
+      -webkit-transform: translateY(-5px);
+      transform: translateY(-5px);
+      background-color: #000000;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      background-color: rgb(0, 0, 0);
+    }
+  }
+  
+  @keyframes animate-out-middle-bar {
+    0% {
+      background-color: #000000
+    }
+    80% {
+      background-color: #000000;
+    }
+    100% {
+      background-color: rgb(0, 0, 0);
+    }
+  }
+  .open-overlay span {
+    display: block;
+    height: 3px;
+    border-radius: 6px;
+    background-color: rgb(0, 0, 0);
+    cursor: pointer;
+    margin-top: 8px;
+  }
+@media screen and (max-width:768px){
+    .menus nav li a {
+        -webkit-transform: rotate(-90deg); 
+        -moz-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+        filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+      }
+
+}
