@@ -9,6 +9,7 @@ required for the video modal... Video Modal
 styles are down below --
 -----------------------------------------*/
 * {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 html {
@@ -73,7 +74,9 @@ main .column.right {
   display: block;
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
+  -o-object-position: 50% 50%;
   object-position: 50% 50%;
 }
 .video-banner-headline {
@@ -107,9 +110,6 @@ main .column.right {
   height: 2.5em;
   
   -webkit-transform: translateX(-50%) translateY(-50%) scale(1.0);
-	-moz-transform: translateX(-50%) translateY(-50%) scale(1.0);
-	-ms-transform: translateX(-50%) translateY(-50%) scale(1.0);
-	-o-transform: translateX(-50%) translateY(-50%) scale(1.0);
 	transform: translateX(-50%) translateY(-50%) scale(1.0);
   
   -webkit-transition: 
@@ -125,9 +125,6 @@ main .column.right {
 }
 .video-banner-icon-play:hover {
   -webkit-transform: translateX(-50%) translateY(-50%) scale(1.2);
-	-moz-transform: translateX(-50%) translateY(-50%) scale(1.2);
-	-ms-transform: translateX(-50%) translateY(-50%) scale(1.2);
-	-o-transform: translateX(-50%) translateY(-50%) scale(1.2);
 	transform: translateX(-50%) translateY(-50%) scale(1.2);
   
   backgound: #330099;
@@ -189,6 +186,7 @@ main .column.right {
   font-weight: 900;
   text-decoration: none;
   border-radius: 1.5em;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.25);
   box-shadow: 0 1px 1px rgba(0,0,0,0.25);
   
   /* button theme - secondary is default */
@@ -244,6 +242,7 @@ main .column.right {
   
   -webkit-transform: scale(1.0);
 	transform: scale(1.0);
+  -webkit-box-shadow: 0 0 0 rgba(0,0,0,0.0);
   box-shadow: 0 0 0 rgba(0,0,0,0.0);
   
   -webkit-transition: 
@@ -254,6 +253,7 @@ main .column.right {
 .content .video-thumb:hover {
 	-webkit-transform: scale(1.05);
 	transform: scale(1.05);
+  -webkit-box-shadow: 0 2px 4px rgba(13,1,61,0.35);
   box-shadow: 0 2px 4px rgba(13,1,61,0.35);
 }
 .content .video-thumb img {
@@ -269,7 +269,9 @@ main .column.right {
   bottom: 0;
   
   /* clipping for source images that are letterboxed */
+  -o-object-fit: cover;
   object-fit: cover;
+  -o-object-position: 50% 50%;
   object-position: 50% 50%;
   
   background: #2b2b2b;
@@ -302,25 +304,24 @@ main .column.right {
   transform: translate(500%,0%);
 
   -webkit-transition: -webkit-transform 0s linear 0s;
+  transition: -webkit-transform 0s linear 0s;
   transition: transform 0s linear 0s;
+  transition: transform 0s linear 0s, -webkit-transform 0s linear 0s;
 
 
   /* using flexbox for vertical centering */
 
   /* Flexbox display */
   display: -webkit-box;
-  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
 
   /* Vertical alignment */
   -webkit-box-align: center;
-  -moz-box-align: center;
   -ms-flex-align: center;
-  -webkit-align-items: center;
   align-items: center;
 
   -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
 .video-modal .overlay {
@@ -396,6 +397,7 @@ iframe#youtube {
 	z-index: 1;
 
 	background: #000;
+	-webkit-box-shadow: 0px 2px 16px rgba(0,0,0,0.5);
 	box-shadow: 0px 2px 16px rgba(0,0,0,0.5);
 }
 
@@ -429,6 +431,7 @@ iframe#youtube {
     position: absolute;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     font-size: 40px;
     font-weight: bolder;
@@ -444,16 +447,21 @@ iframe#youtube {
     width: 100%;
     height: 100%;
     background-color: hsla(0, 0%, 0%, 0.8);
+    -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
   }
   
   .overlay-slide-down {
+    -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
+    -webkit-transform: translateY(0);
     transform: translateY(0)
   }
   
   .overlay-slide-up {
+    -webkit-transition: all .8s ease-in-out;
     transition: all .8s ease-in-out;
+    -webkit-transform: translateY(-100%);
     transform: translateY(-100%)
   }
   
@@ -466,16 +474,24 @@ iframe#youtube {
   }
   
   .menus nav ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     list-style: none;
   }
   
   .menus nav ul li {
+    -ms-flex-preferred-size: 20%;
     flex-basis: 20%;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     height: 100%;
     overflow: hidden;
+    -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
   }
   
@@ -502,14 +518,17 @@ iframe#youtube {
     top: 50%;
     left: 0;
     z-index: 100;
+    -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
     opacity: 0;
+    -webkit-transition: all .2s linear;
     transition: all .2s linear;
   }
   
  .menus nav li a:after {
     content: attr(data-content);
     font-size: 0.7rem;
+    -webkit-transition: all .2s linear;
     transition: all .2s linear;
     opacity: 0;
     position: absolute;
@@ -529,11 +548,13 @@ iframe#youtube {
   }
   
  .menus nav li a:hover:before {
+    -webkit-transform: translateX(0);
     transform: translateX(0);
     opacity: 1;
   }
   
   .menus nav li a:hover:after {
+    -webkit-transform: translateY(15px);
     transform: translateY(15px);
     opacity: 1;
   }
@@ -545,42 +566,52 @@ iframe#youtube {
   .menus nav li:nth-of-type(5){background-color: #233237}
   
   .slide-in-nav-item {
+    -webkit-animation: slide-in-nav-item 0.4s linear 1 .2s both;
     animation: slide-in-nav-item 0.4s linear 1 .2s both;
   }
   
   .slide-in-nav-item-delay-1 {
+    -webkit-animation: slide-in-nav-item 0.4s linear 1 .4s both;
     animation: slide-in-nav-item 0.4s linear 1 .4s both;
   }
   
   .slide-in-nav-item-delay-2 {
+    -webkit-animation: slide-in-nav-item 0.4s linear 1 .6s both;
     animation: slide-in-nav-item 0.4s linear 1 .6s both;
   }
   
   .slide-in-nav-item-delay-3 {
+    -webkit-animation: slide-in-nav-item 0.4s linear 1 .8s both;
     animation: slide-in-nav-item 0.4s linear 1 .8s both;
   }
   
   .slide-in-nav-item-delay-4 {
+    -webkit-animation: slide-in-nav-item 0.4s linear 1 1s both;
     animation: slide-in-nav-item 0.4s linear 1 1s both;
   }
   
   .slide-in-nav-item-reverse {
+    -webkit-animation: slide-in-nav-item-reverse .3s linear 1 .5s both;
     animation: slide-in-nav-item-reverse .3s linear 1 .5s both;
   }
   
   .slide-in-nav-item-delay-1-reverse {
+    -webkit-animation: slide-in-nav-item-reverse .3s linear 1 .4s both;
     animation: slide-in-nav-item-reverse .3s linear 1 .4s both;
   }
   
   .slide-in-nav-item-delay-2-reverse {
+    -webkit-animation: slide-in-nav-item-reverse .3s linear 1 .3s both;
     animation: slide-in-nav-item-reverse .3s linear 1 .3s both;
   }
   
   .slide-in-nav-item-delay-3-reverse {
+    -webkit-animation: slide-in-nav-item-reverse .3s linear 1 .2s both;
     animation: slide-in-nav-item-reverse .3s linear 1 .2s both;
   }
   
   .slide-in-nav-item-delay-4-reverse {
+    -webkit-animation: slide-in-nav-item-reverse .3s linear 1 both;
     animation: slide-in-nav-item-reverse .3s linear 1 both;
   }
   
@@ -604,41 +635,47 @@ iframe#youtube {
     display: block;
     height: 3px;
     border-radius: 6px;
-    background-color: rgb(255, 255, 255);
+    background-color: #ffff;
     cursor: pointer;
     margin-top: 8px;
   }
  .black .open-overlay span {
     display: block;
     height: 1px;
-    background-color: rgb(0, 0, 0);
+    background-color: #fff;
     cursor: pointer;
     margin-top: 8px;
   }
   
   .animate-top-bar {
+    -webkit-animation: animate-top-bar .6s linear 1 both;
     animation: animate-top-bar .6s linear 1 both
 
   }
   
   .animate-bottom-bar {
+    -webkit-animation: animate-bottom-bar .6s linear 1 both;
     animation: animate-bottom-bar .6s linear 1 both
     
   }
   
   .animate-middle-bar {
+    -webkit-animation: animate-middle-bar .6s linear 1 both;
     animation: animate-middle-bar .6s linear 1 both
   }
   
   .animate-out-top-bar {
+    -webkit-animation: animate-out-top-bar .6s linear 1 both;
     animation: animate-out-top-bar .6s linear 1 both
   }
   
   .animate-out-bottom-bar {
+    -webkit-animation: animate-out-bottom-bar .6s linear 1 both;
     animation: animate-out-bottom-bar .6s linear 1 both
   }
   
   .animate-out-middle-bar {
+    -webkit-animation: animate-out-middle-bar .6s linear 1 both;
     animation: animate-out-middle-bar .6s linear 1 both
   }
   
@@ -646,6 +683,17 @@ iframe#youtube {
   /* ====================================
   Animation keyframes
   ==================================== */
+  
+  @-webkit-keyframes slide-in-nav-item {
+    from {
+      -webkit-transform: translateY(-100%);
+      transform: translateY(-100%)
+    }
+    to {
+      -webkit-transform: translateY(0);
+      transform: translateY(0)
+    }
+  }
   
   @keyframes slide-in-nav-item {
     from {
@@ -658,6 +706,17 @@ iframe#youtube {
     }
   }
   
+  @-webkit-keyframes slide-in-nav-item-reverse {
+    from {
+      -webkit-transform: translateY(0);
+      transform: translateY(0)
+    }
+    to {
+      -webkit-transform: translateY(-100%);
+      transform: translateY(-100%)
+    }
+  }
+  
   @keyframes slide-in-nav-item-reverse {
     from {
       -webkit-transform: translateY(0);
@@ -666,6 +725,26 @@ iframe#youtube {
     to {
       -webkit-transform: translateY(-100%);
       transform: translateY(-100%)
+    }
+  }
+  
+  @-webkit-keyframes animate-top-bar {
+    0% {
+      background-color: rgb(0, 0, 0);
+    }
+    50% {
+      -webkit-transform: translateY(9px);
+      transform: translateY(9px)
+    }
+    80% {
+      -webkit-transform: translateY(5px);
+      transform: translateY(5px);
+      background-color: rgb(0, 0, 0)
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      background-color: #000000;
     }
   }
   
@@ -681,6 +760,26 @@ iframe#youtube {
       -webkit-transform: translateY(5px);
       transform: translateY(5px);
       background-color: rgb(0, 0, 0)
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      background-color: #000000;
+    }
+  }
+  
+  @-webkit-keyframes animate-bottom-bar {
+    0% {
+      background-color: rgb(0, 0, 0);
+    }
+    50% {
+      -webkit-transform: translateY(-9px);
+      transform: translateY(-9px)
+    }
+    80% {
+      -webkit-transform: translateY(-5px);
+      transform: translateY(-5px);
+      background-color: rgb(0, 0, 0);
     }
     100% {
       -webkit-transform: translateY(0);
@@ -709,6 +808,18 @@ iframe#youtube {
     }
   }
   
+  @-webkit-keyframes animate-middle-bar {
+    0% {
+      background-color: rgb(0, 0, 0);
+    }
+    80% {
+      background-color: rgb(0, 0, 0);
+    }
+    100% {
+      background-color: #000000;
+    }
+  }
+  
   @keyframes animate-middle-bar {
     0% {
       background-color: rgb(0, 0, 0);
@@ -718,6 +829,26 @@ iframe#youtube {
     }
     100% {
       background-color: #000000;
+    }
+  }
+  
+  @-webkit-keyframes animate-out-top-bar {
+    0% {
+      background-color: #000000
+    }
+    50% {
+      -webkit-transform: translateY(9px);
+      transform: translateY(9px)
+    }
+    80% {
+      -webkit-transform: translateY(5px);
+      transform: translateY(5px);
+      background-color: #000000
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      background-color: rgb(0, 0, 0);
     }
   }
   
@@ -733,6 +864,26 @@ iframe#youtube {
       -webkit-transform: translateY(5px);
       transform: translateY(5px);
       background-color: #000000
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      background-color: rgb(0, 0, 0);
+    }
+  }
+  
+  @-webkit-keyframes animate-out-bottom-bar {
+    0% {
+      background-color: #000000
+    }
+    50% {
+      -webkit-transform: translateY(-9px);
+      transform: translateY(-9px)
+    }
+    80% {
+      -webkit-transform: translateY(-5px);
+      transform: translateY(-5px);
+      background-color: #000000;
     }
     100% {
       -webkit-transform: translateY(0);
@@ -761,6 +912,18 @@ iframe#youtube {
     }
   }
   
+  @-webkit-keyframes animate-out-middle-bar {
+    0% {
+      background-color: #000000
+    }
+    80% {
+      background-color: #000000;
+    }
+    100% {
+      background-color: rgb(0, 0, 0);
+    }
+  }
+  
   @keyframes animate-out-middle-bar {
     0% {
       background-color: #000000
@@ -776,17 +939,21 @@ iframe#youtube {
     display: block;
     height: 3px;
     border-radius: 6px;
-    background-color: rgb(0, 0, 0);
+    background-color: #000;
     cursor: pointer;
     margin-top: 8px;
   }
 @media screen and (max-width:768px){
     .menus nav li a {
-        -webkit-transform: rotate(-90deg); 
-        -moz-transform: rotate(-90deg);
-        -o-transform: rotate(-90deg);
+        -webkit-transform: rotate(-90deg);
         transform: rotate(-90deg);
         filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
       }
+
+    .open-overlay span {
+
+    background-color: #ffff!important;
+   
+  }
 
 }
